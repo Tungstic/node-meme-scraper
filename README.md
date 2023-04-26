@@ -2,7 +2,7 @@
 
 ## Task
 
-Create a cli (Command Line Interface) application that scrapes the current version of this website:
+Create a CLI application that scrapes the current version of this website:
 
 [Memegen Link](memegen-link-examples-upleveled.netlify.app)
 
