@@ -17,9 +17,9 @@ Avoid using an "image scraper" or "image downloader" library that does multiple 
 
 ## TODO
 
-- [ ] Command line cheatsheet steps (setup for Node.js project)
-- [ ] Set up a `.gitignore` with the `memes` folder
-- [ ] Create a folder called `"memes"`
+- [x] Command line cheatsheet steps (setup for Node.js project)
+- [x] Set up a `.gitignore` with the `memes` folder
+- [x] Create a folder called `"memes"`
 - [ ] Access the website (send a request to the website / "fetching")
 - [ ] Search for the `section` in the string of HTML that comes back (in the "response") from the website
 - [ ] Search for the first 10 image sources in the `section`
