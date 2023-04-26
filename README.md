@@ -4,7 +4,7 @@
 
 Create a CLI application that scrapes the current version of this website:
 
-[Memegen Link](memegen-link-examples-upleveled.netlify.app)
+[Memegen Link](https://memegen-link-examples-upleveled.netlify.app/)
 
 ...and saves the first 10 images into a folder called "memes" within the directory of the new project. The image files should be named with a number with a leading zero, eg. 01.jpg, 02.jpg, etc.
 Make sure that the meme images are "ignored" in Git - they should not show up in your repository.
