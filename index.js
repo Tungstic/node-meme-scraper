@@ -19,9 +19,15 @@ const onlyImageTags = root.querySelector('img');
 
 // console.log(Object.values(onlyImageTags)); // Gives me numbers of the inner objects??
 // console.log(Object.values(onlyImageTags));
-const img1 = onlyImageTags.rawAttrs;
+const img1 = onlyImageTags.rawAttrs; // This is a string "src="https.."" that needs to be trimmed
 
-const url = img1;
+// Trim that string
 
-const file = fs.createWriteStream('memes/01.jpg');
-file.write(url);
+function bareUrl(linkString) {
+  linkString = linkString.trim();
+  return linkString.slice(5, -1);
+}
+
+console.log(bareUrl(img1));
+// const file = fs.createWriteStream('memes/01.jpg');
+// file.write(url);
