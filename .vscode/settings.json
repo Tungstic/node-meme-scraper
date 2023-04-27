@@ -1,4 +1,4 @@
 {
   "css.lint.unknownAtRules": "ignore",
-  "cSpell.words": ["cheatsheet", "Memegen"]
+  "cSpell.words": ["cheatsheet", "Memegen", "readdir"]
 }
