@@ -78,16 +78,16 @@ async function download(url, filepath) {
   });
 }
 
-const path1 = 'memes/01.jpg';
-const path2 = 'memes/02.jpg';
-const path3 = 'memes/03.jpg';
-const path4 = 'memes/04.jpg';
-const path5 = 'memes/05.jpg';
-const path6 = 'memes/06.jpg';
-const path7 = 'memes/07.jpg';
-const path8 = 'memes/08.jpg';
-const path9 = 'memes/09.jpg';
-const path10 = 'memes/10.jpg';
+const path1 = './memes/01.jpg';
+const path2 = './memes/02.jpg';
+const path3 = './memes/03.jpg';
+const path4 = './memes/04.jpg';
+const path5 = './memes/05.jpg';
+const path6 = './memes/06.jpg';
+const path7 = './memes/07.jpg';
+const path8 = './memes/08.jpg';
+const path9 = './memes/09.jpg';
+const path10 = './memes/10.jpg';
 
 await download(image1, path1);
 await download(image2, path2);
