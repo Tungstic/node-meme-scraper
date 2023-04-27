@@ -3,7 +3,12 @@ import axios from 'axios';
 import fetch from 'node-fetch';
 import { parse } from 'node-html-parser';
 
-// import http from 'node:http';
+const dir = './memes'; // name of the directory/folder
+
+if (!fs.existsSync(dir)) {
+  // check if folder already exists
+  fs.mkdirSync(dir); // creating folder
+}
 
 // Download HTML from meme website as a string (body is a string)
 const downloadHTML = await fetch(
