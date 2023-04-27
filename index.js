@@ -17,7 +17,7 @@ const root = parse(body);
 // Get only img tags from the whole of html
 const onlyImageTags = root.querySelectorAll('img');
 // console.log(onlyImageTags);
-// console.log(Object.keys(onlyImageTags)); // Gives me numbers of the inner objects??
+// console.log(Object.keys(onlyImageTags)); // Check the keys of the object to extract the URL strings
 
 const img1 = onlyImageTags[0]['rawAttrs']; // This is a string "src="https.."" that needs to be trimmed
 const img2 = onlyImageTags[1]['rawAttrs'];
@@ -30,7 +30,7 @@ const img8 = onlyImageTags[7]['rawAttrs'];
 const img9 = onlyImageTags[8]['rawAttrs'];
 const img10 = onlyImageTags[9]['rawAttrs'];
 
-const imgArray = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+let imgArray = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 
 // Trim the strings inside the array
 
@@ -42,14 +42,23 @@ function bareUrl(arrOfStrings) {
   });
 }
 
-bareUrl(imgArray);
+imgArray = bareUrl(imgArray);
+const [
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image8,
+  image9,
+  image10,
+] = imgArray;
 
-// console.log(Object.values(onlyImageTags));
+// THIS WORKS, DO NOT CHANGE
 
-/* THIS WORKS, DO NOT CHANGE, JUST NEED TO WORK FOR ARRAY FOR IMAGES INSTEAD OF ONLY ONE
-
-
-// Use Axios to download an image
+// Use Axios to download images
 async function download(url, filepath) {
   const response = await axios({
     url,
@@ -64,8 +73,24 @@ async function download(url, filepath) {
   });
 }
 
-const remoteUrl = image1;
-const localPath = 'memes/01.jpg';
+const path1 = 'memes/01.jpg';
+const path2 = 'memes/02.jpg';
+const path3 = 'memes/03.jpg';
+const path4 = 'memes/04.jpg';
+const path5 = 'memes/05.jpg';
+const path6 = 'memes/06.jpg';
+const path7 = 'memes/07.jpg';
+const path8 = 'memes/08.jpg';
+const path9 = 'memes/09.jpg';
+const path10 = 'memes/10.jpg';
 
-await download(remoteUrl, localPath);
-*/
+await download(image1, path1);
+await download(image2, path2);
+await download(image3, path3);
+await download(image4, path4);
+await download(image5, path5);
+await download(image6, path6);
+await download(image7, path7);
+await download(image8, path8);
+await download(image9, path9);
+await download(image10, path10);
