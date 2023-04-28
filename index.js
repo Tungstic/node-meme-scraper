@@ -99,3 +99,34 @@ await download(image7, path7);
 await download(image8, path8);
 await download(image9, path9);
 await download(image10, path10);
+
+// Stretch goal to download the Gandalf meme per request
+// console.log(process.argv[2]);
+
+let memeRequest = process.argv[3]; // string "gandalf"
+if (memeRequest) {
+  memeRequest = memeRequest.toLowerCase();
+}
+
+// const onlyKeys = Object.keys(onlyImageTags);
+// console.log(onlyKeys); // 143 is its length
+
+let gandalfLink;
+
+for (let i = 0; i < 143; i++) {
+  // console.log(onlyImageTags[i]['rawAttrs']); all image URLs as strings
+  if (onlyImageTags[i]['rawAttrs'].includes('gandalf')) {
+    gandalfLink = onlyImageTags[i]['rawAttrs'];
+  }
+}
+
+gandalfLink = gandalfLink.trim();
+gandalfLink = gandalfLink.slice(5, -1);
+
+const pathToGandalf = './memes/gandalf.jpg';
+
+if (memeRequest === 'gandalf') {
+  await download(gandalfLink, pathToGandalf);
+} else if (!memeRequest) {
+  console.log('Please type <hello gandalf> to download an extra meme');
+}
