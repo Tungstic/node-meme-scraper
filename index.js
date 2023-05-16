@@ -21,8 +21,6 @@ const root = parse(body);
 
 // Get only img tags from the whole of html
 const onlyImageTags = root.querySelectorAll('img');
-// console.log(onlyImageTags);
-// console.log(Object.keys(onlyImageTags)); // Check the keys of the object to extract the URL strings
 
 const img1 = onlyImageTags[0]['rawAttrs']; // This is a string "src="https.."" that needs to be trimmed
 const img2 = onlyImageTags[1]['rawAttrs'];
@@ -60,8 +58,6 @@ const [
   image9,
   image10,
 ] = imgArray;
-
-// THIS WORKS, DO NOT CHANGE
 
 // Use Axios to download images
 async function download(url, filepath) {
@@ -101,15 +97,11 @@ await download(image9, path9);
 await download(image10, path10);
 
 // Stretch goal to download the Gandalf meme per request
-// console.log(process.argv[2]);
 
 let memeRequest = process.argv[3]; // string "gandalf"
 if (memeRequest) {
   memeRequest = memeRequest.toLowerCase();
 }
-
-// const onlyKeys = Object.keys(onlyImageTags);
-// console.log(onlyKeys); // 143 is its length
 
 let gandalfLink;
 
