@@ -19,25 +19,17 @@ const body = await downloadHTML.text();
 // Convert string "body" into an object
 const root = parse(body);
 
-// Get only img tags from the whole of html
+// Get only <img /> elements from the whole of html
 const onlyImageTags = root.querySelectorAll('img');
 
-const img1 = onlyImageTags[0]['rawAttrs']; // This is a string "src="https.."" that needs to be trimmed
-const img2 = onlyImageTags[1]['rawAttrs'];
-const img3 = onlyImageTags[2]['rawAttrs'];
-const img4 = onlyImageTags[3]['rawAttrs'];
-const img5 = onlyImageTags[4]['rawAttrs'];
-const img6 = onlyImageTags[5]['rawAttrs'];
-const img7 = onlyImageTags[6]['rawAttrs'];
-const img8 = onlyImageTags[7]['rawAttrs'];
-const img9 = onlyImageTags[8]['rawAttrs'];
-const img10 = onlyImageTags[9]['rawAttrs'];
-
-let imgArray = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-
+// Get the first 10 image urls from all <img /> elements
+const tenImages = [];
+for (let i = 0; i < 11; i++) {
+  tenImages.push(onlyImageTags[i]['rawAttrs']);
+}
 // Trim the strings inside the array
 
-function bareUrl(arrOfStrings) {
+function trimUrl(arrOfStrings) {
   return arrOfStrings.map((str) => {
     str = str.trim();
     str = str.slice(5, -1);
@@ -45,19 +37,7 @@ function bareUrl(arrOfStrings) {
   });
 }
 
-imgArray = bareUrl(imgArray);
-const [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-] = imgArray;
+const bareUrl = trimUrl(tenImages);
 
 // Use Axios to download images
 async function download(url, filepath) {
@@ -70,21 +50,30 @@ async function download(url, filepath) {
     response.data
       .pipe(fs.createWriteStream(filepath))
       .on('error', reject)
-      .once('close', () => resolve(filepath));
+      .once('close', () => {
+        resolve(filepath);
+        console.log(filepath);
+      });
   });
 }
 
-const path1 = './memes/01.jpg';
-const path2 = './memes/02.jpg';
-const path3 = './memes/03.jpg';
-const path4 = './memes/04.jpg';
-const path5 = './memes/05.jpg';
-const path6 = './memes/06.jpg';
-const path7 = './memes/07.jpg';
-const path8 = './memes/08.jpg';
-const path9 = './memes/09.jpg';
-const path10 = './memes/10.jpg';
+// Create local paths for 10 images in memes folder
+const paths = [];
+function createPathForImage() {
+  for (let i = 0; i < 9; i++) {
+    paths.push(`./memes/0${i + 1}.jpg`);
+  }
+  paths.push('./memes/10.jpg');
+  return paths;
+}
+createPathForImage();
+console.log(paths);
 
+for (let i = 0; i < 11; i++) {
+  await download(bareUrl[i], paths[i]);
+}
+
+/*
 await download(image1, path1);
 await download(image2, path2);
 await download(image3, path3);
@@ -94,11 +83,11 @@ await download(image6, path6);
 await download(image7, path7);
 await download(image8, path8);
 await download(image9, path9);
-await download(image10, path10);
+await download(image10, path10); */
 
 // Stretch goal to download the Gandalf meme per request
 
-let memeRequest = process.argv[3]; // string "gandalf"
+/* let memeRequest = process.argv[3]; // string "gandalf"
 if (memeRequest) {
   memeRequest = memeRequest.toLowerCase();
 }
@@ -122,3 +111,4 @@ if (memeRequest === 'gandalf') {
 } else if (!memeRequest) {
   console.log('Please type <hello gandalf> to download an extra meme');
 }
+ */
