@@ -52,7 +52,6 @@ async function download(url, filepath) {
       .on('error', reject)
       .once('close', () => {
         resolve(filepath);
-        console.log(filepath);
       });
   });
 }
@@ -67,27 +66,17 @@ function createPathForImage() {
   return paths;
 }
 createPathForImage();
-console.log(paths);
 
-for (let i = 0; i < 11; i++) {
-  await download(bareUrl[i], paths[i]);
+// download images and save them in memes folder
+for (let i = 0; i < 10; i++) {
+  const imgLink = bareUrl[i];
+  const filepath = paths[i];
+  await download(imgLink, filepath);
 }
 
-/*
-await download(image1, path1);
-await download(image2, path2);
-await download(image3, path3);
-await download(image4, path4);
-await download(image5, path5);
-await download(image6, path6);
-await download(image7, path7);
-await download(image8, path8);
-await download(image9, path9);
-await download(image10, path10); */
+// Stretch goal to download the Gandalf meme per user request
 
-// Stretch goal to download the Gandalf meme per request
-
-/* let memeRequest = process.argv[3]; // string "gandalf"
+let memeRequest = process.argv[3]; // string "gandalf"
 if (memeRequest) {
   memeRequest = memeRequest.toLowerCase();
 }
@@ -95,7 +84,6 @@ if (memeRequest) {
 let gandalfLink;
 
 for (let i = 0; i < 143; i++) {
-  // console.log(onlyImageTags[i]['rawAttrs']); all image URLs as strings
   if (onlyImageTags[i]['rawAttrs'].includes('gandalf')) {
     gandalfLink = onlyImageTags[i]['rawAttrs'];
   }
@@ -111,4 +99,3 @@ if (memeRequest === 'gandalf') {
 } else if (!memeRequest) {
   console.log('Please type <hello gandalf> to download an extra meme');
 }
- */
